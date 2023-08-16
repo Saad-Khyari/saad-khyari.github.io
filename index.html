@@ -158,15 +158,16 @@
 								<h2>Contact</h2>
 							</header>
 
-							 <form action="mailto:saadkhyari404@gmail.com" method="post" enctype="text/plain">
+							 <form action="mailto:saadkhyari404@gmail.com" method="GET" enctype="text/plain">
 								<div class="row">
-									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" id="name" name="subject" placeholder="Name"  required/></div>
+									<div class="col-6 col-12-mobile"><input type="email" id="email" name="to" placeholder="Email" required /></div>
+									<div class="col-6 col-12-mobile"><input type="text" id="email" name="subject" placeholder="Email" required /></div>
 									<div class="col-12">
-										<textarea name="message" placeholder="Message"></textarea>
+										<textarea id="messgage" name="body" placeholder="Message" required></textarea>
 									</div>
 									<div class="col-12">
-										<input type="submit" value="Send Message" />
+										<input type="submit" value="Send Email" />
 									</div>
 								</div>
 							</form>
