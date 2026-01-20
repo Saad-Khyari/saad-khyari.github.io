@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SQL Injection — Safe Learning & Prevention</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" href="images/saad.png">
+    <style>
+        p, h3, h5, img, div, li {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-right: 300px;
+            margin-left: 300px;
+        }
+        strong {
+            color: black;
+            font-size: 28px;
+        }
+        b { color: black; }
+        div { font-size: 20px; }
+        h2 { text-align: center; }
+        span:hover, span::after, span:active { color: rgb(128, 0, 0); }
+        img { text-align: center; max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; }
+        pre {
+            background:#f4f4f4;
+            padding:15px;
+            overflow:auto;
+            border-radius:6px;
+            margin-left:300px;
+            margin-right:300px;
+            margin-top:30px;
+            margin-bottom:30px;
+        }
+        code { font-family: monospace; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+    <ul><a href="index.html" id="top-link"><span class="icon solid fa-arrow-left">Home</span></a></ul>
+
+    <h2>Understanding SQL Injection — Safe Lab & Prevention</h2>
+
+    <h5>
+        This activity explains what SQL Injection is, how to practice safely in legal labs,
+        and how to prevent it in applications. Practice only in controlled, authorized environments.
+    </h5>
+
+    <center><img src="images/act_sql_1.png" alt="SQL concept illustration"></center>
+
+    <h3>What is <b>SQL Injection</b>?</h3>
+    <p>
+        SQL Injection (SQLi) is a class of security vulnerability where an attacker can influence
+        application SQL queries through untrusted input. This can lead to data leakage, modification,
+        or other unintended behavior. The purpose of this activity is defensive: learn to detect and fix SQLi.
+    </p>
+
+    <center><img src="images/act_sql_2.png" alt="Database diagram"></center>
+
+    <h3>Vulnerable Example (for learning only)</h3>
+    <p>
+        The snippet below shows a common insecure pattern: building SQL by concatenating user input.
+        Never use this pattern in production — it is shown here so you can recognise it and learn the fix.
+    </p>
+
+    <pre><code>// Example: Vulnerable PHP (do NOT use in production)
+$user = $_GET['user'];               // untrusted input
+$sql = "SELECT * FROM users WHERE username = '" . $user . "';";
+$result = $db->query($sql);
+</code></pre>
+
+    <h3>Secure Fix — Use Parameterized Queries / Prepared Statements</h3>
+    <p>
+        Use parameterized queries (prepared statements) so user input is treated as data — not SQL.
+        Below are defensive examples in PHP (PDO), Python (sqlite3), and Node.js (mysql2).
+    </p>
+
+    <pre><code>// PHP (PDO) - safe
+$stmt = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+$stmt->execute(['username' => $_GET['user']]);
+$rows = $stmt->fetchAll();
+</code></pre>
+
+    <pre><code># Python (sqlite3) - safe
+cur.execute("SELECT * FROM users WHERE username = ?", (user_input,))
+rows = cur.fetchall()
+</code></pre>
+
+    <pre><code>// Node.js (mysql2) - safe
+const [rows] = await pool.execute('SELECT * FROM users WHERE username = ?', [userInput]);
+</code></pre>
+
+    <h3>How to Practice Safely (Legal Labs)</h3>
+    <ul>
+        <li>Install and use intentionally vulnerable applications in a local VM — examples: <b>DVWA</b> (Damn Vulnerable Web App) and <b>OWASP Juice Shop</b>.</li>
+        <li>Use isolated environments: VirtualBox / VMware, or Docker containers. Never scan or attack systems you don't own or have explicit permission to test.</li>
+        <li>Follow lab documentation and use snapshots so you can restore clean states after testing.</li>
+    </ul>
+
+    <h3>Key Prevention Best Practices</h3>
+    <ul>
+        <li>Use prepared statements / parameterized queries for all database access.</li>
+        <li>Use least-privilege database accounts (avoid using DB admin account from your app).</li>
+        <li>Validate and sanitize inputs where appropriate (but don't rely on this alone).</li>
+        <li>Use an ORM that enforces parameterization where possible.</li>
+        <li>Employ web application firewalls (WAF) and input encoding on output.</li>
+        <li>Keep libraries and database drivers up to date, and run regular security testing (authorized).</li>
+    </ul>
+
+    <h3>Activity Steps (Safe & Authorized)</h3>
+    <ul>
+        <li>Set up a local lab: install DVWA or Juice Shop inside a VM or Docker container.</li>
+        <li>Read the lab documentation and use only the provided exercises.</li>
+        <li>Identify insecure code patterns and implement fixes (use the safe examples above).</li>
+        <li>Document what you changed and why .</li>
+    </ul>
+
+    <center><img src="images/act_sql_3.png" alt="Lab setup screenshot"></center>
+
+    <h3>Reflections</h3>
+    <p>
+        This activity taught me how SQL injection works conceptually and the importance of
+        defensive coding. The most important lesson is: never trust user input — always use
+        parameterized queries and follow the principle of least privilege.
+    </p>
+
+    <div>
+        References:
+        <em>
+            <ul>
+                <li><a href="https://owasp.org/www-community/attacks/SQL_Injection">OWASP — SQL Injection (overview and prevention)</a></li>
+                <li><a href="https://github.com/digininja/DVWA">DVWA — Damn Vulnerable Web App (lab)</a></li>
+                <li><a href="https://owasp.org/www-project-juice-shop">OWASP Juice Shop — modern vulnerable web application</a></li>
+            </ul>
+        </em>
+    </div>
+
+</body>
+</html>

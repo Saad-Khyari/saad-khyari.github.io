@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Guess the Number Game</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" href="images/saad.png">
+    <style>
+        p, h3, h5, img, div, li {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-right: 300px;
+            margin-left: 300px;
+        }
+        h2 { text-align: center; }
+        input, button { font-size: 18px; padding: 10px; margin: 5px; }
+        #result { font-weight: bold; margin-top: 20px; }
+        .game-container { text-align: center; }
+    </style>
+</head>
+<body>
+
+    <ul><a href="index.html" id="top-link"><span class="icon solid fa-arrow-left">Home</span></a></ul>
+
+    <h2>Simple Web Game: Guess the Number</h2>
+
+    <h5>
+        This activity demonstrates a simple interactive game using HTML, CSS, and JavaScript.
+        The player tries to guess a randomly generated number between 1 and 100.  
+        This project shows how to handle user input, DOM updates, and basic logic.
+    </h5>
+
+    <div class="game-container">
+        <p>Guess a number between 1 and 100:</p>
+        <input type="number" id="guess" />
+        <button onclick="checkGuess()">Submit</button>
+        <div id="result"></div>
+        <button onclick="resetGame()">Reset Game</button>
+    </div>
+
+    <h3>How it Works</h3>
+    <p>
+        The game generates a random number. The player enters a guess, and the game responds with hints:
+        "Too high", "Too low", or "Correct!". This demonstrates basic game logic and interactivity in JavaScript.
+    </p>
+
+    <h3>Reflections</h3>
+    <p>
+        Building this game helped me understand DOM manipulation, event handling, and user input validation.  
+        It’s a fun way to practice JavaScript and create interactive web content.
+    </p>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            const userGuess = Number(document.getElementById('guess').value);
+            const result = document.getElementById('result');
+
+            if (!userGuess) {
+                result.textContent = "Please enter a number!";
+            } else if (userGuess > randomNumber) {
+                result.textContent = "Too high! Try again.";
+            } else if (userGuess < randomNumber) {
+                result.textContent = "Too low! Try again.";
+            } else {
+                result.textContent = "Correct! 🎉 You guessed the number!";
+            }
+        }
+
+        function resetGame() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('result').textContent = "";
+            document.getElementById('guess').value = "";
+        }
+    </script>
+
+</body>
+</html>
