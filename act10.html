@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Penetration Testing Simulation</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" href="images/saad.png">
+
+    <style>
+        p, h3, h5, img, div, li {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-right: 300px;
+            margin-left: 300px;
+        }
+        b { color: black; }
+        h2 { text-align: center; }
+        div { font-size: 20px; }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<ul>
+    <a href="index.html" id="top-link">
+        <span class="icon solid fa-arrow-left">Home</span>
+    </a>
+</ul>
+
+<h2>Penetration Testing Simulation in a Safe Lab</h2>
+
+<h5>
+This activity demonstrates a penetration testing simulation conducted in a controlled and authorized environment.
+The goal is to understand common vulnerabilities, assess system exposure, and improve defensive security practices.
+</h5>
+
+<img src="images/pentest_lab_1.png" alt="Lab setup diagram">
+
+<h3>What is <b>Penetration Testing</b>?</h3>
+<p>
+Penetration testing is a security assessment technique used to evaluate the security of systems, networks,
+or applications by simulating real-world attack scenarios in a controlled environment.
+It helps identify vulnerabilities before they can be exploited maliciously.
+</p>
+
+<h3>Lab Environment Setup</h3>
+<ul>
+    <li>Virtual Machine software: <b>VirtualBox / VMware</b></li>
+    <li>Attacker machine: <b>Kali Linux</b></li>
+    <li>Target machine: <b>DVWA / Metasploitable / OWASP Juice Shop</b></li>
+    <li>Network type: <b>Host-only / Internal Network</b></li>
+</ul>
+
+<img src="images/pentest_lab_2.png" alt="Virtual machines setup">
+
+<h3>Testing Methodology</h3>
+<p>
+The penetration testing simulation followed a structured and ethical methodology:
+</p>
+
+<ul>
+    <li><b>Reconnaissance:</b> Identifying target IPs and exposed services</li>
+    <li><b>Scanning:</b> Enumerating open ports and services</li>
+    <li><b>Vulnerability Identification:</b> Detecting misconfigurations and known weaknesses</li>
+    <li><b>Exploitation (Simulated):</b> Testing vulnerabilities within lab scope only</li>
+    <li><b>Mitigation:</b> Identifying fixes and security improvements</li>
+</ul>
+
+<h3>Findings & Observations</h3>
+<p>
+During the simulation, several common security weaknesses were identified, including
+weak authentication mechanisms and exposed services.
+These findings highlight the importance of secure configurations, patch management,
+and access control.
+</p>
+
+<img src="images/pentest_lab_3.png" alt="Testing results">
+
+<h3>Security Recommendations</h3>
+<ul>
+    <li>Disable unused services and close unnecessary ports</li>
+    <li>Apply strong authentication and password policies</li>
+    <li>Regularly update systems and applications</li>
+    <li>Use firewalls and intrusion detection systems</li>
+    <li>Perform periodic security assessments</li>
+</ul>
+
+<h3>Reflections</h3>
+<p>
+This activity improved my understanding of penetration testing methodologies and the importance
+of ethical security testing. Working in a safe lab environment reinforced responsible practices
+and strengthened my defensive security knowledge.
+</p>
+
+<div>
+    <strong>References:</strong>
+    <em>
+        <ul>
+            <li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10</a></li>
+            <li><a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a></li>
+            <li><a href="https://github.com/digininja/DVWA">DVWA – Damn Vulnerable Web App</a></li>
+            <li><a href="https://www.kali.org/docs/">Kali Linux Documentation</a></li>
+        </ul>
+    </em>
+</div>
+
+</body>
+</html>
